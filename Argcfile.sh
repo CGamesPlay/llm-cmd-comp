@@ -6,10 +6,11 @@ set -eu
 # Invoked via "cog bump -a"
 publish() {
 	git push origin main --tags
+	rm -rf dist/
 	pip install --upgrade build twine
 	python3 -m build
 	twine upload dist/*
-	rm dist/*
+	rm -rf dist/
 }
 
 if ! command -v argc >/dev/null; then
