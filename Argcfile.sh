@@ -9,6 +9,7 @@ publish() {
 	pip install --upgrade build twine
 	python3 -m build
 	twine upload dist/*
+	rm dist/*
 }
 
 if ! command -v argc >/dev/null; then
