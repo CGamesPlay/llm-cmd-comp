@@ -12,9 +12,9 @@ llm install llm-cmd-comp
 ```
 Then install the shell integration for your preferred shell.
 
-- **Fish**: place `share/llm-cmd-comp.fish` in `~/.config/fish/conf.d/`.
-- **Zsh**: source `share/llm-cmd-comp.zsh` in your `~/.zshrc`.
-- **Bash**: source `share/llm-cmd-comp.bash` in your `~/.bashrc`.
+- **Fish**: add `llm cmdcomp --init fish | source` in a file in `~/.config/fish/conf.d/`.
+- **Zsh**: add `eval "$(llm cmdcomp --init zsh)"` to your `~/.zshrc`.
+- **Bash**: add `eval "$(llm cmdcomp --init bash)"` to your `~/.bashrc`.
 
 ## Usage
 
@@ -38,7 +38,7 @@ Neat ways you can use this feature:
 To set up this plugin locally, first checkout the code. Then create a new virtual environment:
 
 ```bash
-cd llm-cmd
+cd llm-cmd-comp
 python3 -m venv venv
 source venv/bin/activate
 ```

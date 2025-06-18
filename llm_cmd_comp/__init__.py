@@ -19,13 +19,32 @@ The shell is $shell on $platform
 @llm.hookimpl
 def register_commands(cli):
     @cli.command()
+    @click.option(
+        "--init",
+        type=click.Choice(["bash", "zsh", "fish"]),
+        help="Output shell integration code for the specified shell and exit.",
+    )
     @click.argument("args", nargs=-1)
     @click.option("-m", "--model", default=None, help="Specify the model to use")
     @click.option("-s", "--system", help="Custom system prompt")
     @click.option("--key", help="API key to use")
-    def cmdcomp(args, model, system, key):
-        """Generate commands directly in your command line (requires shell integration)"""
+    def cmdcomp(init, args, model, system, key):
+        """Generate commands directly in your command line (requires shell integration)
+        Optionally output shell integration code with --init SHELL (bash, zsh, fish)
+        """
+        import sys
         from llm.cli import get_default_model
+
+        if init:
+            share_dir = os.path.join(os.path.dirname(__file__), "share")
+            filename = f"llm-cmd-comp.{init}"
+            filepath = os.path.join(share_dir, filename)
+            if not os.path.exists(filepath):
+                click.echo(f"Error: Integration file for {init} not found.", err=True)
+                sys.exit(1)
+            with open(filepath) as f:
+                click.echo(f.read())
+            return
 
         prompt = " ".join(args)
         model_id = model or get_default_model()
