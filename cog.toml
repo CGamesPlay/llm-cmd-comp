@@ -24,6 +24,7 @@ cog verify --file "$1"
 """
 
 [commit_types]
+build = { changelog_title = "", omit_from_changelog = true }
 chore = { changelog_title = "", omit_from_changelog = true }
 docs = { changelog_title = "", omit_from_changelog = true }
 

@@ -1,0 +1,23 @@
+name: Conventional Commits
+
+on: [push]
+
+jobs:
+  validate-commits:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install cocogitto
+      run: |
+        curl -L https://github.com/cocogitto/cocogitto/releases/latest/download/cocogitto-6.3.0-x86_64-unknown-linux-musl.tar.gz \
+          | tar --strip-components=1 -xz -C /usr/local/bin x86_64-unknown-linux-musl/cog
+
+    - name: Validate conventional commits
+      run: |
+        # Find merge base and check commits in PR only
+        MERGE_BASE=$(git merge-base origin/main HEAD)
+        cog check ${MERGE_BASE}..HEAD
