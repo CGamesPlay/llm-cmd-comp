@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## v1.2.0 - 2025-06-18
+#### Build system
+- Integration test - (6e8a7e8) - Ryan Patterson
+- Clean dist after build - (09d034c) - Ryan Patterson
+#### Features
+- Add shell integrations into package distribution for easy install - (37e7b54) - Ryan Patterson
+
+- - -
+
 ## v1.1.1 - 2025-01-19
 #### Bug Fixes
 - Improve help text on cmdcomp - (51183c8) - Ryan Patterson

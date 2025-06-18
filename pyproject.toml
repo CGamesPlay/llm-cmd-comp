@@ -1,6 +1,6 @@
 [project]
 name = "llm-cmd-comp"
-version = "1.1.1"
+version = "1.2.0"
 description = "Use LLM to generate commands for your shell"
 readme = "README.md"
 authors = [{name = "Ryan Patterson"}]
